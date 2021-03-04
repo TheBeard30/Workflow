@@ -3,12 +3,12 @@
 </div>
 <div class="content">
     <div class="left-menu">
-        <app-itempanel></app-itempanel>
+        <app-itempanel class='test'></app-itempanel>
     </div>
     <div class="graph">
-        <app-graph></app-graph>
+        <app-graph [backGroundColor]='graphBackgroundColor' #graph></app-graph>
     </div>
     <div class='detail'>
-        <app-detailpanel></app-detailpanel>
+        <app-detailpanel #detailPanel [(backgroundColor)]='graphBackgroundColor' (backgroundColorChange)='backgroundColorChange($event)'></app-detailpanel>
     </div>
 </div>

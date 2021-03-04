@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Graph } from '@antv/x6';
 
 @Component({
@@ -6,13 +6,29 @@ import { Graph } from '@antv/x6';
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.less']
 })
-export class GraphComponent implements OnInit {
+export class GraphComponent implements OnInit,OnChanges {
+
+  @ViewChild('graph') graphDiv: ElementRef;	
+
+  @Input() backGroundColor: string = '#ffffff';
+  @Output() backgroundColorChange: EventEmitter<string> = new EventEmitter();
+
+  graph: Graph;
+
 
   constructor(
     private elementRef: ElementRef
   ) { }
 
   ngOnInit() {
+  }
+
+
+  ngOnChanges(change: SimpleChanges){
+	if(change.backGroundColor && change.backGroundColor.currentValue && this.graph){
+		this.backGroundColor = change.backGroundColor.currentValue as string;
+		this.graph.drawBackground({color: this.backGroundColor})
+	}
   }
 
   ngAfterViewInit() {
@@ -45,12 +61,13 @@ export class GraphComponent implements OnInit {
 		],
 	};
 
+	let element = this.graphDiv.nativeElement;
 	const graph = new Graph({
-		container: document.getElementById('paintGraph'),
-		width: 800,
-		height: 600,
+		container: element,
+		width: element.offsetWidth,
+		height: element.offsetHeight,
 		background: {
-			color: '#fffbe6', // 设置画布背景颜色
+			color: this.backGroundColor, // 设置画布背景颜色
 		},
 		grid: {
 			size: 10,      // 网格大小 10px
@@ -60,6 +77,8 @@ export class GraphComponent implements OnInit {
 
 
 	graph.fromJSON(data);
+
+	this.graph = graph;
   };
  
 

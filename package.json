@@ -23,6 +23,7 @@
     "@types/jquery": "^3.5.5",
     "@types/jquery-mousewheel": "^3.1.8",
     "@types/mousetrap": "^1.6.5",
+    "ng-zorro-antd": "^11.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

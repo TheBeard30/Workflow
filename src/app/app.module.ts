@@ -8,7 +8,7 @@ import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import { DetailpanelComponent } from './components/detailpanel/detailpanel.component';
 import { ItempanelComponent } from './components/itempanel/itempanel.component';
 import { GraphComponent } from './components/graph/graph.component';
-
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { GraphComponent } from './components/graph/graph.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

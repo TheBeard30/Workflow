@@ -1,1 +1,13 @@
-<p>detailpanel works!</p>
+
+
+<div>
+    <div class='background-grid'>
+        <nz-tabset>
+            <nz-tab nzTitle="背景">
+                <input nz-input type = 'color' [(ngModel)]="color" (ngModelChange)="backgroundChange($event)">
+            </nz-tab>
+            <nz-tab nzTitle="网格"></nz-tab>
+        </nz-tabset>
+    </div>
+
+</div>
